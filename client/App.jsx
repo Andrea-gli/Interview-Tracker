@@ -10,6 +10,7 @@ import { Route, Switch, Link, BrowserRouter } from 'react-router-dom';
 export const UserContext = React.createContext();
 
 const UserProvider = ({ children }) => {
+  console.log('children==>', children);
   const [currentUser, setCurrentUser] = useState({ id: null });
 
   const saveUser = (id) => {
@@ -29,12 +30,11 @@ const App = () => {
     <UserProvider>
       <BrowserRouter>
         <Switch>
-          <Route exact path="/" component={Login} />
-          <Route path="/dashboard" component={Dashboard} />
-          <Route path="/signup" component={Signup} />
+          <Route exact path='/' component={Login} />
+          <Route path='/dashboard' component={Dashboard} />
+          <Route path='/signup' component={Signup} />
 
-          <Route path="/application/:id/step" component={Step} />
-
+          <Route path='/application/:id/step' component={Step} />
         </Switch>
       </BrowserRouter>
     </UserProvider>
