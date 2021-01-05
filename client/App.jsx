@@ -10,7 +10,7 @@ import { Route, Switch, Link, BrowserRouter } from 'react-router-dom';
 export const UserContext = React.createContext();
 
 const UserProvider = ({ children }) => {
-  console.log('children==>', children);
+  //console.log('children==>', children);
   const [currentUser, setCurrentUser] = useState({ id: null });
 
   const saveUser = (id) => {

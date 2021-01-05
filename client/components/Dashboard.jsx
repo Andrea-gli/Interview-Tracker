@@ -8,15 +8,15 @@ import { UserContext } from '../App.jsx';
 const appStatusLabel = {
   1: 'Not Applied',
   2: 'Applied',
-  3: 'Phone Screening', 
+  3: 'Phone Screening',
   4: 'Technical Interview',
   5: 'Interviewing',
   6: 'Offer Received',
   7: 'Offer Accepted',
   8: 'Offer Rejected',
   9: 'Application Rejected',
-  10: 'Not Interested'
-}
+  10: 'Not Interested',
+};
 
 const Dashboard = () => {
   let history = useHistory();
@@ -33,12 +33,15 @@ const Dashboard = () => {
       headers: { 'content-type': 'application/JSON' },
     });
     const data = await resp.json();
+    console.log('fetchapp data==>', data, 'data type', typeof data);
     setTracker(data);
     setUpdateState(false);
   };
 
   // get the users data from the DB
   useEffect(() => {
+    console.log('use effect fired');
+    console.log('usereffect context user===>', context.user.id);
     if (updateState) fetchApplications();
   }, [updateState]);
 
@@ -83,7 +86,7 @@ const Dashboard = () => {
         key === 'Notes'
       ) {
         return (
-          <th key={index} className="low-priority-col">
+          <th key={index} className='low-priority-col'>
             {key}
           </th>
         );
@@ -119,29 +122,29 @@ const Dashboard = () => {
         ) => {
           return (
             <tr key={id}>
-              <td id="hide-ID-col">{id}</td>
+              <td id='hide-ID-col'>{id}</td>
               <td>{company}</td>
               <td>{job_title}</td>
               <td>{location}</td>
-              <td className="low-priority-col">{found_by}</td>
-              <td className="low-priority-col">{how_applied}</td>
-              <td className="low-priority-col" id="date-column">
+              <td className='low-priority-col'>{found_by}</td>
+              <td className='low-priority-col'>{how_applied}</td>
+              <td className='low-priority-col' id='date-column'>
                 {new Date(date_applied).toLocaleDateString('en-US')}
               </td>
 
-              <td className="low-priority-col" id="notes-column">
+              <td className='low-priority-col' id='notes-column'>
                 {notes}
               </td>
               <td>{appStatusLabel[app_status]}</td>
-              <td className="operation">
+              <td className='operation'>
                 <button
-                  className="deleteButton"
+                  className='deleteButton'
                   onClick={() => setShowModal({ action: 'edit', id: index })}
                 >
                   Edit
                 </button>
                 <button
-                  className="button"
+                  className='button'
                   onClick={() => removeApplications(id)}
                 >
                   Delete
@@ -150,12 +153,12 @@ const Dashboard = () => {
                 <Link
                   to={{
                     pathname: `/application/${id}/step`,
-                    state: { application : tracker[index] },
+                    state: { application: tracker[index] },
                   }}
                 >
                   <button
-                    src="step"
-                    className="editStep"
+                    src='step'
+                    className='editStep'
                     // onClick={changeRoute} id={id}
                   >
                     View progress
@@ -171,19 +174,24 @@ const Dashboard = () => {
 
   return (
     <>
-      <h2 id="title">Applications Dashboard</h2>
-      <div className="tableContainer">
+      <h2 id='title'>Applications Dashboard</h2>
+      <div className='tableContainer'>
         {context.user.id ? (
           <div>
-            <table id="tracker">
+            <table id='tracker'>
               <thead>
                 <tr>{renderHeader()}</tr>
               </thead>
               <tbody>{renderBody()}</tbody>
             </table>
-            <button onClick={() => {
-              context.saveUser(null)
-              history.goBack()}}>Sign out</button>
+            <button
+              onClick={() => {
+                context.saveUser(null);
+                history.goBack();
+              }}
+            >
+              Sign out
+            </button>
 
             <button onClick={() => setShowModal({ action: 'add', id: null })}>
               Add new application
@@ -191,7 +199,7 @@ const Dashboard = () => {
           </div>
         ) : (
           <p>
-            Login first <Link to="/">here</Link>
+            Login first <Link to='/'>here</Link>
           </p>
         )}
       </div>

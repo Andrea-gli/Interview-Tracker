@@ -58,6 +58,7 @@ applicationController.addApp = (req, res, next) => {
       return next();
     })
     .catch((err) => {
+      console.log('erradding===>', err);
       return next({
         log: 'applicationsController.addApp: ERROR: Error writing to database',
         message: {
@@ -71,13 +72,16 @@ applicationController.addApp = (req, res, next) => {
 applicationController.deleteApp = (req, res, next) => {
   const queryText = 'DELETE FROM applications WHERE id = $1';
   const queryVal = [req.params.app_id];
+  console.log('queryVal--->', queryVal);
 
   db.query(queryText, queryVal)
     .then(({ rows }) => {
+      console.log('rows==>', rows);
       res.locals.transaction = rows;
       return next();
     })
     .catch((err) => {
+      console.log('delete app error===>', err);
       return next({
         log:
           'applicationsController.deleteApp: ERROR: Error deleting application from database',

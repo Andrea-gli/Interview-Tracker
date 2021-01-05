@@ -24,6 +24,7 @@ const Modal = ({ setShowModal, action, currentApp, setUpdateState }) => {
   //   const fakeUID = 2;
 
   const context = useContext(UserContext);
+  console.log('modal context==>', context);
 
   const addApplication = (body) => {
     fetch(`/user/${context.user.id}/application`, {
@@ -81,20 +82,20 @@ const Modal = ({ setShowModal, action, currentApp, setUpdateState }) => {
 
   console.log('currentapp', currentApp);
   return (
-    <div id="div3" className="modalWrapper">
-      <div className="modalBackground">
+    <div id='div3' className='modalWrapper'>
+      <div className='modalBackground'>
         <h2>{modalTitle[action]}</h2>
         <form
           // onSubmit={handleSubmit} doesn't work
-          id="list"
-          className="modalForm"
+          id='list'
+          className='modalForm'
         >
           <label>
             Job Title
             <input
-              type="text"
+              type='text'
               // placeholder="Job Title"
-              id="job_title"
+              id='job_title'
               value={job_title}
               onChange={(e) => setJobTitle(e.target.value)}
               required
@@ -103,9 +104,9 @@ const Modal = ({ setShowModal, action, currentApp, setUpdateState }) => {
           <label>
             Company
             <input
-              type="text"
+              type='text'
               // placeholder="company"
-              id="company"
+              id='company'
               value={company}
               onChange={(e) => setCompany(e.target.value)}
               required
@@ -114,9 +115,9 @@ const Modal = ({ setShowModal, action, currentApp, setUpdateState }) => {
           <label>
             How I applied
             <input
-              type="text"
-              placeholder="e.g. email, company website, Glassdoor,..."
-              id="how_applied"
+              type='text'
+              placeholder='e.g. email, company website, Glassdoor,...'
+              id='how_applied'
               value={how_applied}
               onChange={(e) => setHowApplied(e.target.value)}
               required
@@ -125,9 +126,9 @@ const Modal = ({ setShowModal, action, currentApp, setUpdateState }) => {
           <label>
             Date applied
             <input
-              type="date"
+              type='date'
               // placeholder="Date applied"
-              id="date_applied"
+              id='date_applied'
               value={date_applied.slice(0, 10)}
               onChange={(e) => setDateApplied(e.target.value)}
               required
@@ -136,9 +137,9 @@ const Modal = ({ setShowModal, action, currentApp, setUpdateState }) => {
           <label>
             Location
             <input
-              type="text"
+              type='text'
               // placeholder="Location"
-              id="location"
+              id='location'
               value={location}
               onChange={(e) => setLocation(e.target.value)}
               required
@@ -147,9 +148,9 @@ const Modal = ({ setShowModal, action, currentApp, setUpdateState }) => {
           <label>
             Found by
             <input
-              type="text"
-              placeholder="e.g. recruiter/agency, linkedIn, Google,..."
-              id="found_by"
+              type='text'
+              placeholder='e.g. recruiter/agency, linkedIn, Google,...'
+              id='found_by'
               value={found_by}
               onChange={(e) => setFoundBy(e.target.value)}
               required
@@ -158,9 +159,9 @@ const Modal = ({ setShowModal, action, currentApp, setUpdateState }) => {
           <label>
             Notes
             <input
-              type="text"
+              type='text'
               // placeholder="Notes"
-              id="notes"
+              id='notes'
               value={notes}
               onChange={(e) => setNotes(e.target.value)}
               required
@@ -170,37 +171,37 @@ const Modal = ({ setShowModal, action, currentApp, setUpdateState }) => {
             App Status
             <select
               // type="text"
-              id="app_status"
+              id='app_status'
               value={app_status}
               onChange={(e) => setAppStatus(e.target.value)}
               required
             >
-             <option value="1">Not Applied</option>
-            <option value="2">Applied</option>
-            <option value="3">Phone Screening</option>
-            <option value="4">Technical Interview</option>
-            <option value="5">Interviewing</option>
-            <option value="6">Offer Received</option>
-            <option value="7">Offer Accepted</option>
-            <option value="8">Offer Rejected</option>
-            <option value="9">Application Rejected</option>
-            <option value="10">Not Interested</option>
-          </select>
+              <option value='1'>Not Applied</option>
+              <option value='2'>Applied</option>
+              <option value='3'>Phone Screening</option>
+              <option value='4'>Technical Interview</option>
+              <option value='5'>Interviewing</option>
+              <option value='6'>Offer Received</option>
+              <option value='7'>Offer Accepted</option>
+              <option value='8'>Offer Rejected</option>
+              <option value='9'>Application Rejected</option>
+              <option value='10'>Not Interested</option>
+            </select>
           </label>
-          <div className="modalButtonWrapper">
+          <div className='modalButtonWrapper'>
             <button
-              className="modalButton"
+              className='modalButton'
               onClick={() => setShowModal({ action: null, id: null })}
             >
               Cancel
             </button>
 
             <button
-              type="submit"
-              className="modalButton"
+              type='submit'
+              className='modalButton'
               onClick={handleSubmit}
             >
-              Save{' '}
+              Save
             </button>
           </div>
         </form>

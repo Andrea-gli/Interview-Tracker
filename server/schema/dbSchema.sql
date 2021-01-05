@@ -60,7 +60,9 @@ ALTER TABLE "applications" ADD CONSTRAINT "applications_fk0" FOREIGN KEY ("job_s
 ALTER TABLE "applications" ADD CONSTRAINT "applications_fk1" FOREIGN KEY ("app_status") REFERENCES "app_statuses"("id");
 
 
-ALTER TABLE "steps" ADD CONSTRAINT "steps_fk0" FOREIGN KEY ("app_id") REFERENCES "applications"("id");
+-- ALTER TABLE "steps" ADD CONSTRAINT "steps_fk0" FOREIGN KEY ("app_id") REFERENCES "applications"("id");
+
+
 
 
 
