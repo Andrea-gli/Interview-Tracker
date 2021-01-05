@@ -7,7 +7,7 @@
     "start": "NODE_ENV=production nodemon server/server.js",
     "build": "NODE_ENV=production webpack",
     "dev": "NODE_ENV=development webpack serve & nodemon server/server.js",
-    "seed": "psql -d postgres://gxmtkujb:8flhjxthm4xdsg_SCO7eGw1_60UsgYk3@suleiman.db.elephantsql.com:5432/gxmtkujb -f server/schema/dbSchema.sql",
+    "seed": "postgres://gxmtkujb:8flhjxthm4xdsg_SCO7eGw1_60UsgYk3@suleiman.db.elephantsql.com:5432/gxmtkujb -f server/schema/dbSchema.sql",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
